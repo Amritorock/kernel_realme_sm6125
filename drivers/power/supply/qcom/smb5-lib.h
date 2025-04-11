@@ -93,6 +93,7 @@ enum print_reason {
 // Kun.Zhang@BSP.CHG.Basic, 2019/04/09  add for charge
 #define DEFAULT_100MA_VOTER		"DEFAULT_100MA_VOTER"
 #endif
+#define BYPASS_VOTER			"BYPASS_VOTER"
 
 #define BOOST_BACK_STORM_COUNT	3
 #define WEAK_CHG_STORM_COUNT	8
