@@ -25,7 +25,7 @@ function zipping()
 git clone --depth=1 https://github.com/Amritorock/AnyKernel3 -b r5x AnyKernel
 cp out/arch/arm64/boot/Image.gz-dtb AnyKernel
 cd AnyKernel
-zip -r9 Stormbreaker-r5x-${TANGGAL}.zip *
+zip -r9 The-Nullifier-r5x-${TANGGAL}.zip *
 }
 
 compile
