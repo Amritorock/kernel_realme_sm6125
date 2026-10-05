@@ -4698,9 +4698,7 @@ static const struct dev_pm_ops qpnp_qg_pm_ops = {
 #define DEFAULT_BATT_TEMP            250
 #define DEFAULT_BATT_VOLT            3800
 #define DEFAULT_BATT_SOC             50
-#define WAIT_FOR_HEALTHD_SOC         -1
 #define DEFAULT_BATT_CURRENT         500
-#define MAX_WAIT_FOR_HEALTHD_COUNT   12
 #define BATT_CAPACITY                5000
 #define VBAT_HIGH_THRESHOLD          4500
 #define TBAT_LOW_THRESHOLD           -190
@@ -4767,7 +4765,6 @@ static int qpnp_qg_get_batt_remaining_capacity(void)
 static int qpnp_qg_get_battery_soc(void)
 {
         int rc = 0, soc_bat = 0;
-		static int count = 0;
 
         if (!qg_chip) {
                 return DEFAULT_BATT_SOC;
@@ -4779,17 +4776,6 @@ static int qpnp_qg_get_battery_soc(void)
             return -1;
 		}
 
-        if (get_boot_mode() == MSM_BOOT_MODE__RECOVERY) {
-                return soc_bat;
-        }
-
-#if 1
-    if (healthd_ready == false && count < MAX_WAIT_FOR_HEALTHD_COUNT) {
-            pr_err("healthd not ready, count = %d\n", count);
-            count ++;
-            return -1;
-    }
-#endif
         return soc_bat;
 }
 
